@@ -1,24 +1,20 @@
-import logo from './logo.svg';
+import React from 'react';
+import { HashRouter, Route, Switch } from 'react-router-dom';
+import Home from './Pages/Home';
+import Countries from './Pages/Countries';
 import './App.css';
 
-function App() {
+function App(props) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HashRouter>
+      <React.Suspense >
+        <Switch>
+          <Route path="/" component={Home} exact={true} />
+          <Route path="/countries-user" render={(props) => <Countries {...props} privilege={false}  />} exact={true}  />
+          <Route path="/countries-admin" render={(props) => <Countries {...props} privilege={true}  />} exact={true} />
+        </Switch>
+      </React.Suspense>
+    </HashRouter>
   );
 }
 
