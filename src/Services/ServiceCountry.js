@@ -2,10 +2,10 @@ import http from '../Utils/http-common';
 
 class ServiceCountry {
     static getAllCountries(pageNo, noOfItems) {
-        http.get("/countries/" + pageNo + "/" + noOfItems);
+        return http.get("/countries/" + pageNo + "/" + noOfItems);
     }
     static addNewCountry(name) {
-        http.get("/addcountry?name=" + name);
+        return http.get("/addcountry?name=" + name);
     }
 }
-export default ServiceCountry
+export default ServiceCountry;

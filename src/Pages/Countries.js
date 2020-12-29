@@ -21,12 +21,12 @@ const CountriesPage = (props) => {
     }
 
     useEffect(() => {
-        // getCountries();
+        getCountries();
         console.log(privilege)
     }, [])
 
-    const addAndSelectHandler = async (name) => {
-        await ServiceCountry.addNewCountry(name)
+    const addAndSelectHandler = (name) => {
+        ServiceCountry.addNewCountry(name)
             .then((response) => {
                 console.log(response)
                 setCountries(countries => [...countries, name])
